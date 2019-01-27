@@ -28,8 +28,6 @@ describe DataInterfaces::Memory::Gateways::Memo do
 
     context "when question is empty" do
       it "returns false" do
-        subject.add(valid_hash)
-
         valid_hash[:question] = ""
         results = subject.valid?(valid_hash)
 
@@ -39,8 +37,6 @@ describe DataInterfaces::Memory::Gateways::Memo do
 
     context "when answer is empty" do
       it "returns false" do
-        subject.add(valid_hash)
-
         valid_hash[:answer] = ""
         results = subject.valid?(valid_hash)
 
