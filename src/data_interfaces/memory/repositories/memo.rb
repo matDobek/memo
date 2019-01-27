@@ -1,5 +1,3 @@
-require "digest"
-
 module DataInterfaces::Memory
   module Repository
     class Memo

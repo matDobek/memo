@@ -1,3 +1,5 @@
+require "digest"
+
 Dir[
   "./src/**/_module_init.rb",
   "./src/use_cases/**/*.rb",
