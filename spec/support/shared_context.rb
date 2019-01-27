@@ -1,3 +1,19 @@
+shared_context "review_repository_file_path" do
+  let(:review_repository_file_path) do
+    "#{File.dirname(__FILE__)}/../fixtures/file_repositories/review"
+  end
+end
+
+shared_context "tmp_review_repository_file_path, clear_tmp_review_repository!" do
+  let(:tmp_review_repository_file_path) do
+    "#{File.dirname(__FILE__)}/../fixtures/file_repositories/tmp_review"
+  end
+
+  let(:clear_tmp_review_repository!) do
+    File.truncate(tmp_review_repository_file_path, 0)
+  end
+end
+
 shared_context "dir_with_memos" do
   let(:dir_with_memos) do
     "#{File.dirname(__FILE__)}/../fixtures/dir_with_memos"
