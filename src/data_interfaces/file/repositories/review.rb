@@ -2,7 +2,7 @@ module DataInterfaces::File
   module Repository
     class Review
       def initialize(file_path)
-        return Errors::InvalidFile if !File.exists?(file_path)
+        fail Errors::InvalidFile if !File.exists?(file_path)
 
         @file_path = file_path
       end
