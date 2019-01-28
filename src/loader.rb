@@ -1,5 +1,6 @@
 require "date"
 require "digest"
+require "io/console"
 
 Dir[
   "./src/**/_module_init.rb",
