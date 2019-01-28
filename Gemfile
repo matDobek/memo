@@ -3,4 +3,5 @@ ruby File.read(".ruby-version").chomp
 
 group :test do
   gem "rspec"
+  gem "timecop"
 end
