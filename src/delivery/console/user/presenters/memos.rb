@@ -5,6 +5,7 @@ module Delivery::Console::User
         formatted_category = category_name.split.map(&:capitalize).join(" ")
 
         {
+          id: memo.id,
           category: formatted_category,
           question: memo.question,
           answer: memo.answer,
