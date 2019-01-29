@@ -1,9 +1,10 @@
 module UseCases::User
   module AssembleTest
     class UseCase
-      def initialize(memos_gateway:, categories_gateway:)
-        @memos_gateway = memos_gateway
+      def initialize(memos_gateway:, categories_gateway:, reviews_gateway:)
+        @memos_gateway      = memos_gateway
         @categories_gateway = categories_gateway
+        @reviews_gateway    = reviews_gateway
       end
 
       def execute(presenter:, category_id:)
@@ -26,7 +27,11 @@ module UseCases::User
 
       private
 
-      attr_reader :memos_gateway, :categories_gateway
+      attr_reader :memos_gateway, :categories_gateway, :reviews_gateway
+
+      def reviews
+        @reviews ||= reviews_gateway.all
+      end
     end
   end
 end

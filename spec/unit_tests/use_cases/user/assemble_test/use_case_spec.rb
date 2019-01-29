@@ -1,10 +1,12 @@
 describe UseCases::User::AssembleTest::UseCase do
   include_context "dir_with_memos, gateways, load_sample_memos"
+  include_context "file gateways"
 
   subject do
     described_class.new(
       memos_gateway: memos_gateway,
       categories_gateway: categories_gateway,
+      reviews_gateway: reviews_gateway,
     )
   end
 

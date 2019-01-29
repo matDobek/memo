@@ -20,7 +20,15 @@ shared_context "dir_with_memos" do
   end
 end
 
-shared_context "gateways" do
+shared_context "file gateways" do
+  include_context "review_repository_file_path"
+
+  let(:reviews_gateway)  do
+    DataInterfaces::File::Gateways::Review.new(review_repository_file_path)
+  end
+end
+
+shared_context "memory gateways" do
   let(:memos_gateway)  do
     DataInterfaces::Memory::Gateways::Memo.new
   end
@@ -32,7 +40,7 @@ end
 
 shared_context "dir_with_memos, gateways, load_sample_memos" do
   include_context "dir_with_memos"
-  include_context "gateways"
+  include_context "memory gateways"
 
   let(:load_sample_memos) do
     UseCases::System::ImportDataFromDirectory::UseCase

@@ -1,6 +1,7 @@
 describe "Performing test" do
   include_context "dir_with_memos"
-  include_context "gateways"
+  include_context "file gateways"
+  include_context "memory gateways"
 
   let(:import_data_use_case) do
     UseCases::System::ImportDataFromDirectory::UseCase
@@ -14,7 +15,7 @@ describe "Performing test" do
 
   let(:assemble_test_use_case) do
     UseCases::User::AssembleTest::UseCase
-      .new(memos_gateway: memos_gateway, categories_gateway: categories_gateway)
+      .new(memos_gateway: memos_gateway, categories_gateway: categories_gateway, reviews_gateway: reviews_gateway)
   end
 
   let(:categories_presenter) do
