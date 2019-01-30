@@ -8,8 +8,9 @@ module UseCases::User
       end
 
       def execute(presenter:, category_id:)
-        reviews        = reviews_gateway.all
-        category_name  = categories_gateway.find_by_id(category_id.to_i)&.name
+        reviews       = reviews_gateway.all
+        category_id   = category_id.to_i
+        category_name = categories_gateway.find_by_id(category_id)&.name
 
         filtered_memos = memos_gateway.all.filter do |memo|
           next if memo.category_id != category_id

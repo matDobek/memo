@@ -17,7 +17,7 @@ describe UseCases::User::AssembleTest::UseCase do
 
     Timecop.freeze(Date.new(1999, 1, 3)) do
       result = subject
-        .execute(category_id: 1, presenter: presenter)
+        .execute(category_id: "1", presenter: presenter)
         .map(&:to_h)
 
       expect(result).to eq([{
