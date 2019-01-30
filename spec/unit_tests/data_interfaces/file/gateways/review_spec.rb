@@ -111,20 +111,20 @@ describe DataInterfaces::File::Gateways::Review do
       result = subject.all.map(&:to_h)
 
       expect(result).to include({
-        memo_id: "1",
-        date: Date.new(2019, 01, 01),
+        memo_id: "06b15aaa2046df47294d7bf1cad9a0d2",
+        date: Date.new(1999, 01, 01),
         success: true,
       })
 
       expect(result).to include({
-        memo_id: "2",
-        date: Date.new(2019, 01, 01),
+        memo_id: "21c58e47a1a80e754148cc396bc8794d",
+        date: Date.new(1999, 01, 01),
         success: false,
       })
 
       expect(result).to include({
-        memo_id: "1",
-        date: Date.new(2019, 01, 02),
+        memo_id: "06b15aaa2046df47294d7bf1cad9a0d2",
+        date: Date.new(1999, 01, 02),
         success: true,
       })
     end

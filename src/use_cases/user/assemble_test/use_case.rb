@@ -8,16 +8,16 @@ module UseCases::User
       end
 
       def execute(presenter:, category_id:)
-        category_id    = category_id.to_i
-        category_name  = categories_gateway
-          .find_by_id(category_id)
-          &.name
+        reviews        = reviews_gateway.all
+        category_name  = categories_gateway.find_by_id(category_id.to_i)&.name
 
         filtered_memos = memos_gateway.all.filter do |memo|
-          match_selected_category = memo.category_id == category_id
-          time_to_review          = true
+          next if memo.category_id != category_id
 
-          match_selected_category && time_to_review
+          memo_review_history     = reviews.filter { |e| e.memo_id == memo.id }.map(&:to_h)
+          suggested_review_date   = ReviewDate.new(memo_review_history).value
+
+          suggested_review_date <= Date.today
         end
 
         filtered_memos.each_with_object([]) do |memo, collection|

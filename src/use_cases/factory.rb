@@ -11,6 +11,7 @@ module UseCases
         UseCases::User::AssembleTest::UseCase.new(
           memos_gateway: memos_gateway,
           categories_gateway: categories_gateway,
+          reviews_gateway: reviews_gateway,
         )
       end
 

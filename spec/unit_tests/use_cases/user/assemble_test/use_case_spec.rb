@@ -15,23 +15,18 @@ describe UseCases::User::AssembleTest::UseCase do
 
     presenter = Delivery::Console::User::Presenters::Memos.new
 
-    result = subject
-      .execute(category_id: 1, presenter: presenter)
-      .map(&:to_h)
+    Timecop.freeze(Date.new(1999, 1, 3)) do
+      result = subject
+        .execute(category_id: 1, presenter: presenter)
+        .map(&:to_h)
 
-    expect(result).to include({
-      id: "06b15aaa2046df47294d7bf1cad9a0d2",
-      category: "Sample Science",
-      question: "Question 1",
-      answer: "Answer 1.",
-    })
-
-    expect(result).to include({
-      id: "21c58e47a1a80e754148cc396bc8794d",
-      category: "Sample Science",
-      question: "Question 2",
-      answer: "Answer 2.\nAnswer 2.",
-    })
+      expect(result).to eq([{
+        id: "21c58e47a1a80e754148cc396bc8794d",
+        category: "Sample Science",
+        question: "Question 2",
+        answer: "Answer 2.\nAnswer 2.",
+      }])
+    end
   end
 end
 
